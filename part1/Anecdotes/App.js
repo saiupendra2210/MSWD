@@ -13,8 +13,8 @@ const Anecdote = (props) => {
       <br />
       has {props.votes} vote(s)
     </>
-  );
-};
+  )
+}
 
 const MostVoted = (props) => {
   return (
@@ -25,8 +25,8 @@ const MostVoted = (props) => {
         <Anecdote anecdote={props.anecdote} votes={props.votes} />
       )}
     </>
-  );
-};
+  )
+}
 
 const App = (props) => {
   const [selected, setSelected] = useState(0);
@@ -35,7 +35,7 @@ const App = (props) => {
 
   const getRandomIdx = (length) => {
     return Math.floor(Math.random() * length);
-  };
+  }
 
   const setNewRandomAnecdote = () => {
     let randomAnecdoteIdx;
@@ -45,14 +45,14 @@ const App = (props) => {
     } while (randomAnecdoteIdx === selected);
 
     setSelected(randomAnecdoteIdx);
-  };
+  }
 
   const incrementVote = () => {
     const newVotes = [...votes];
     newVotes[selected] += 1;
     setVotes(newVotes);
     setHasVotes(true);
-  };
+  }
 
   const handleButtonClick = (type) => {
     switch (type) {
@@ -65,7 +65,7 @@ const App = (props) => {
       default:
         break;
     }
-  };
+  }
 
   const maxVote = votes.reduce(
     (acc, num, idx) => {
@@ -77,7 +77,7 @@ const App = (props) => {
       return acc;
     },
     { num: 0 }
-  );
+  )
 
   const maxVotedAnecdote = anecdotes[maxVote.idx];
 
@@ -94,8 +94,8 @@ const App = (props) => {
         votes={maxVote.num}
       />
     </div>
-  );
-};
+  )
+}
 
 const anecdotes = [
   "If it hurts, do it more often",
@@ -104,7 +104,7 @@ const anecdotes = [
   "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
   "Premature optimization is the root of all evil.",
   "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
-];
+]
 
 ReactDOM.render(<App anecdotes={anecdotes} />, document.getElementById("root"));
 export default App
