@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 const Statistic = (props) => {
     return (
         <p>{props.text} {props.value}</p>
-    );
+    )
 };
 
 const Statistics = (props) => {
@@ -15,7 +15,7 @@ const Statistics = (props) => {
         return (
             <p>No feedbacks given</p>
         );
-    };
+    }
     return (
         <div>
             <table>
@@ -41,13 +41,13 @@ const Statistics = (props) => {
                 </tbody>
             </table>
         </div>
-    );
+    )
 };
 
 const Button = (props) => {
     return (
         <button onClick={props.event}>{props.text}</button>
-    );
+    )
 };
 const App = () => {
     const [good, setGood] = useState(0)
@@ -67,8 +67,8 @@ const App = () => {
             <h2>statistics</h2>
             <Statistics good={good} bad ={bad} neutral={neutral} />
         </div>
-    );
-};
+    )
+}
 
 
 
