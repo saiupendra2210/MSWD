@@ -13,8 +13,8 @@ const Anecdote = (props) => {
       <br />
       has {props.votes} vote(s)
     </>
-  )
-}
+  );
+};
 
 const MostVoted = (props) => {
   return (
@@ -52,7 +52,7 @@ const App = (props) => {
     newVotes[selected] += 1;
     setVotes(newVotes);
     setHasVotes(true);
-  }
+  };
 
   const handleButtonClick = (type) => {
     switch (type) {
@@ -64,20 +64,20 @@ const App = (props) => {
         break;
       default:
         break;
-    }
-  }
+    };
+  };
 
   const maxVote = votes.reduce(
     (acc, num, idx) => {
       if (num > acc.num) {
         acc.num = num;
         acc.idx = idx;
-      }
+      };
 
       return acc;
     },
     { num: 0 }
-  )
+  );
 
   const maxVotedAnecdote = anecdotes[maxVote.idx];
 
