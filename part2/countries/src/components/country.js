@@ -3,11 +3,13 @@ import axios from 'axios'
 
 const api_key = process.env.REACT_APP_API_KEY
 
+
 const Country = ({ data: { name, capital, population, flag, languages } }) => {
     const [weather, setWeather] = useState({})
 
     useEffect(() => {
         axios
+        
             .get(
                 `http://api.weatherstack.com/current?access_key=${api_key}&query=${capital}`
             )
@@ -41,9 +43,9 @@ const Country = ({ data: { name, capital, population, flag, languages } }) => {
                         <storng>wind:</storng> {weather.wind_speed} mph direction {weather.wind_dir}
                     </p>
                 </>
-            )}
+            )};
         </>
-    )
-}
+    );
+};
 
 export default Country
