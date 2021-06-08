@@ -28,9 +28,9 @@ const App = () => {
       countries.filter(
         (country) =>
           country.name.toLowerCase().search(e.target.value.toLowerCase()) !== -1
-      )
+      );
     )
-  }
+  };
 
   const showCountries = () => {
     return countriesFilter.map((country) => (
@@ -38,8 +38,8 @@ const App = () => {
         {country.name}
         <button onClick={() => setShowCountry(country)}>show</button>
       </p>
-    ))
-  }
+    ));
+  };
 
   return (
     <>
@@ -54,7 +54,7 @@ const App = () => {
       )}
       {showCountry.name && <Country data={showCountry} />}
     </>
-  )
-}
+  );
+};
 
 export default App
