@@ -1,14 +1,18 @@
+
 import React, { useState, useEffect } from 'react'
 import Persons from './components/Persons'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
+
 import Notification from './components/Notification'
 import personService from './services/person'
 
 const App = () => {
   const [persons, setPersons] = useState([])
+  
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  
   const [message, setMessage] = useState(null)
 
   const [filter, setFilter] = useState('')
@@ -21,14 +25,14 @@ const App = () => {
       .then(initialPersons => {
         setPersons(initialPersons)
       })
-  }, [])
+  };, [])
 
   // Filter
   const handleFilterChange = (e) => {
     setFilter(e.target.value)
     setFilterPersons(persons.filter((person) =>
       (person.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1)))
-  }
+  };
 
   // Add Person
   const addPerson = (e) => {
@@ -37,13 +41,13 @@ const App = () => {
     const personObject = {
       name: newName,
       number: newNumber
-    }
+    };
     if (personsArray.includes(`${personObject.name}`)) {
       const oldPerson = persons.filter(e => e.name === newName)
       const _id = oldPerson.map(e => e.id)[0]
       const result = window.confirm(
         `${newName} is already added to phonebook, replace the old number with a new one?`
-      )
+      );
       if (result) {
         personService
           .update(_id, personObject)
@@ -53,24 +57,24 @@ const App = () => {
             setMessage({
               text: `Edited ${returnedPerson.name}`,
               type: "success",
-            })
+            };);
             setTimeout(() => {
               setMessage(null)
             }, 3000)
-          })
+          });
           .catch(error => {
             setMessage({
               text: error.response.data.error,
               type: "error"
-            })
+            });
             setTimeout(() => {
               setMessage(null)
             }, 3000)
           })
         setNewName('')
         setNewNumber('')
-      }
-    } else {
+      };
+    }; else {
       personService
         .create(personObject)
         .then(returnedPerson => {
@@ -89,9 +93,12 @@ const App = () => {
             type: "error"
           })
           setTimeout(() => {
+            
             setMessage(null)
+            
           }, 3000)
         })
+      
       setNewName('')
       setNewNumber('')
     }
@@ -103,9 +110,11 @@ const App = () => {
   const addPersonData = {
     newName,
     newNumber,
+    
     handleNameChange,
     handleNumberChange
-  }
+    
+  };
 
   return (
     <div>
